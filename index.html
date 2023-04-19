@@ -28,7 +28,8 @@
                     <div class="description">
                         <span class="name">{{product.name}}</span>
                         <span class="price">{{product.price}}</span>
-                        <div class="quantity-area">
+                        <div class="quantity-area"
+                        v-if="product.active">
                             <button 
                             @click.stop="product.quantity--"
                             :disabled="product.quantity <= 0"
@@ -50,9 +51,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1x Big Mac</td>
-                            <td>5.99</td>
+                        <tr v-for="product in products">
+                            <td v-if="product.active">{{product.quantity + ' x ' + product.name}}</td>
+                            <td v-if="product.active">{{product.quantity * product.price}}</td>
                         </tr>
                         
                         <tr>

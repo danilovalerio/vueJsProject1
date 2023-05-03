@@ -70,6 +70,23 @@ const SelfServiceMachine = {
             products: window.products,
         }
     },
+
+    //para utilizar métodos 
+    methods: {
+        // uma funcao total
+        total: function(){
+            var total = 0;
+
+            // no forEach passamos uma funcao e nomeamos o item que vamos percorrer
+            this.products.forEach(function(item){
+                if(item.active) {
+                    total += item.price * item.quantity
+                }
+            });
+
+            return total.toFixed(2);
+        }
+    },
 }
 
 Vue.createApp(SelfServiceMachine).mount("#app")
